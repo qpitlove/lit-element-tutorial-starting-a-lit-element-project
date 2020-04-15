@@ -1,12 +1,12 @@
-const { GenerateSW } = require('workbox-webpack-plugin');
+// https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
+
+const { GenerateSW } = require("workbox-webpack-plugin");
 
 module.exports = () => ({
   plugins: [
-    new GenerateSW({swDest: 'sw.js'}),
+    new GenerateSW({ swDest: "sw.js" }),
     // new InjectManifest({
-    //   swSrc: './src/sw.js'
+    //   swSrc: './src/_sw.js'
     // })
-  ]
+  ],
 });
-
-// https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
