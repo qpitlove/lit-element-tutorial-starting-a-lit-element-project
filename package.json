@@ -5,7 +5,7 @@
   "main": "sw.js",
   "scripts": {
     "serve": "webpack-dev-server --history-api-fallback --env.mode development",
-    "serve:sw": "npm run serve --  --env.presets serviceworker",
+    "serve:sw": "npm run serve --  --env.presets serviceworker --hot",
     "build": "webpack --env.mode production --env.presets serviceworker"
   },
   "repository": {
