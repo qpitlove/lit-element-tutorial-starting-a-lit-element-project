@@ -89,7 +89,7 @@ module.exports = ({ mode, presets }) => {
                   {
                     useBuiltIns: "usage",
                     corejs: 3,
-                    targets: ["last 2 versions", "ie >= 10"],
+                    targets: ["last 2 versions", "ie >= 10", "android >= 4.2"],
                   },
                 ],
               ],
