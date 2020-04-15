@@ -4,11 +4,9 @@
   "description": "This is a PWA tutorial app. You can find the tutorial on the [Vaadin website](https://vaadin.com/progressive-web-applications).",
   "main": "sw.js",
   "scripts": {
-    "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server --history-api-fallback",
-    "prod": "npm run webpack -- --env.mode production --env.presets serviceworker",
-    "dev": "npm run webpack-dev-server -- --env.mode development",
-    "dev:sw": "npm run webpack-dev-server -- --env.mode development  --env.presets serviceworker"
+    "serve": "webpack-dev-server --history-api-fallback --env.mode development",
+    "serve:sw": "npm run serve --  --env.presets serviceworker",
+    "build": "webpack --env.mode production --env.presets serviceworker"
   },
   "repository": {
     "type": "git",
