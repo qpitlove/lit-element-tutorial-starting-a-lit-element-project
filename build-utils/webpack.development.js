@@ -1,4 +1,4 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = () => ({
   module: {
@@ -9,9 +9,9 @@ module.exports = () => ({
       }
     ]
   },
-  plugins: [
-    // Copy empty ServiceWorker so install doesn't blow up
-    new CopyWebpackPlugin(['src/sw.js'])
-  ],
+  // plugins: [
+  //   // Copy empty ServiceWorker so install doesn't blow up
+  //   new CopyWebpackPlugin(['src/_sw.js'])
+  // ],
   devtool: 'source-map'
 });
