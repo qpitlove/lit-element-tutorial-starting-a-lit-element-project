@@ -3,12 +3,13 @@ const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpackMerge = require("webpack-merge");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 const modeConfig = (env) =>
   require(`./build-utils/webpack.${env.mode}.js`)(env);
 const loadPresets = require("./build-utils/loadPresets");
 
+const documentregisterEl = "./node_modules/document-register-element";
 const webcomponentsjs = "./node_modules/@webcomponents/webcomponentsjs";
 
 const polyfills = [
@@ -27,6 +28,11 @@ const polyfills = [
     to: "vendor",
     flatten: true,
   },
+  {
+    from: resolve(`${documentregisterEl}/build/document-register-element.js`),
+    to: "vendor",
+    flatten: true,
+  },
 ];
 
 const assets = [
@@ -37,16 +43,12 @@ const assets = [
 ];
 
 const plugins = [
-  new CleanWebpackPlugin(["dist"]),
+  new CleanWebpackPlugin(),
   new webpack.ProgressPlugin(),
   new HtmlWebpackPlugin({
     filename: "index.html",
     template: "./src/index.html",
-    minify: {
-      collapseWhitespace: true,
-      minifyCSS: true,
-      minifyJS: true,
-    },
+    minify: false,
   }),
   new CopyWebpackPlugin([...polyfills, ...assets], {
     ignore: [".DS_Store"],
@@ -58,14 +60,14 @@ module.exports = ({ mode, presets }) => {
     {
       mode,
       // entry: {
-      //   main: "./src", // DEFAULT
+      //   main: "./src", // DEFAULT builtIn
       // },
       output: {
         // Make sure to use [name] or [id] in output.filename
         //  when using multiple entry points
         library: "[name]",
         libraryTarget: "umd",
-        filename: "[name].bundle.js",
+        filename: "[name].js",
         // filename: '[name].[chunkhash:8].js'
         chunkFilename: "[id].chunk.js",
       },
